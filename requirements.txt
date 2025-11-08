@@ -1,0 +1,9 @@
+Python – bahasa utama untuk pembuatan bot dan model AI.
+
+Discord.py – untuk membuat bot Discord dan mengatur perintah pengguna.
+
+TensorFlow – untuk pelatihan dan prediksi gambar sampah.
+
+Google Colab – untuk melatih model AI dan menyimpan hasil model (model_sampah.h5).
+
+Flask – untuk menghubungkan model dengan server bot.
