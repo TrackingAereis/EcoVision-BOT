@@ -11,10 +11,18 @@ bot = commands.Bot(command_prefix='*', intents=intents)
 @bot.event
 async def on_ready():
     print(f'🤖EcoVision Bot has logged in as {bot.user}')
+    channel_id = 1441730537260712006
+    channel = bot.get_channel(channel_id)
+
+    if channel:
+        await channel.send("🤖EcoVision Bot has logged in, use *help to see the commands!")
+    else:
+        print("Channel tidak ditemukan!")
 
 
 @bot.command()
 async def hello(ctx):
+    """Menyapa pengguna"""
     await ctx.send(f'Hi👋! I am {bot.user}!')
 
 # --- Perintah utama: deteksi gambar ---
@@ -38,7 +46,7 @@ async def check(ctx):
                     image_path=save_path
                 )
                 await ctx.send(f"♻️ Hasil deteksi: **{hasil}**")
-
+                print(hasil)
                 # Tips tambahan sesuai kategori
                 tips = {
                     "plastik": "Cuci bersih dan kirim ke bank sampah ♻️",
@@ -47,7 +55,7 @@ async def check(ctx):
                     "organik": "Cocok dijadikan kompos alami 🌱"
                 }
 
-                kategori = hasil.lower()
+                kategori = hasil.split("(")[0].strip().lower()
                 if kategori in tips:
                     await ctx.send(f"💡 Tips: {tips[kategori]}")
                 else:
@@ -67,6 +75,5 @@ async def check(ctx):
 async def announce(ctx, *, message: str):
     """Mengumumkan pesan di channel saat ini"""
     await ctx.send(f"📢 {message}")
-
 
 bot.run("")

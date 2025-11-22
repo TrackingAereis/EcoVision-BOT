@@ -1,0 +1,4 @@
+0 Plastik
+1 Kertas
+2 Logam
+3 Organik

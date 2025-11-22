@@ -27,4 +27,5 @@ def get_class(model_path, labels_path, image_path):
   class_name = class_names[index]
   confidence_score = prediction[0][index]
 
-  return class_name[2:], confidence_score
+  class_name = class_name[2:][:-1]
+  return f'{class_name} ({confidence_score})'
